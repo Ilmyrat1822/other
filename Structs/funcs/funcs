@@ -1,0 +1,46 @@
+package funcs
+
+import "fmt"
+
+type transformFn func(int) int
+
+func main() {
+	numbers := []int{1, 2, 3, 4, 5}
+	morenumbers := []int{1, 2, 3, 4, 5}
+	doublenumbers := transformNumbers(&numbers, double)
+	triplenumbers := transformNumbers(&numbers, triple)
+	fmt.Println(doublenumbers)
+	fmt.Println(triplenumbers)
+	transformFname := getTransform(&numbers)
+	transformFname2 := getTransform(&morenumbers)
+	newnumbers := transformNumbers(&numbers, transformFname)
+	newnumbers2 := transformNumbers(&morenumbers, transformFname2)
+
+	fmt.Println(newnumbers)
+	fmt.Println(newnumbers2)
+
+}
+func transformNumbers(numbers *[]int, transform transformFn) []int {
+	resnumbers := []int{}
+
+	for _, value := range *numbers {
+		resnumbers = append(resnumbers, transform(value))
+	}
+
+	return resnumbers
+}
+
+func getTransform(numbers *[]int) transformFn {
+	if (*numbers)[0] == 1 {
+		return double
+	} else {
+		return triple
+	}
+}
+
+func double(num int) int {
+	return num * 2
+}
+func triple(num int) int {
+	return num * 3
+}

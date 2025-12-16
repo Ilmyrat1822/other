@@ -1,0 +1,11 @@
+{{define "post"}}
+{{template "header"}}
+<main>         
+    <h2>{{.Title}}</h2>     
+      <p >{{.Desc}}</p><br>
+      <p class="lead">{{.Fulltext}}</p><br>
+      <a href="/" class="btn btn-danger">Go back</a>
+
+</main> 
+{{template "footer"}}
+{{end}}
