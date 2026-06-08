@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Title}} - Book Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(-5px);
+        }
+        
+        .book-details {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .book-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px;
+            color: white;
+            text-align: center;
+        }
+        
+        .book-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        
+        .book-header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        
+        .book-header .author {
+            font-size: 18px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+        
+        .book-body {
+            padding: 40px;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            color: #666;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .detail-value {
+            color: #333;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .isbn-value {
+            background: #f5f5f5;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            color: #667eea;
+        }
+        
+        .price-value {
+            font-size: 32px;
+            color: #667eea;
+            font-weight: 700;
+        }
+        
+        .actions {
+            padding: 30px 40px;
+            background: #f9f9f9;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+        
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/books" class="back-btn">← Back to Library</a>
+        
+        <div class="book-details">
+            <div class="book-header">
+                <div class="book-icon">📖</div>
+                <h1>{{.Title}}</h1>
+                <p class="author">by {{.Author}}</p>
+            </div>
+            
+            <div class="book-body">
+                <div class="detail-row">
+                    <span class="detail-label">ISBN</span>
+                    <span class="detail-value isbn-value">{{.Isbn}}</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Title</span>
+                    <span class="detail-value">{{.Title}}</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Author</span>
+                    <span class="detail-value">{{.Author}}</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Price</span>
+                    <span class="detail-value price-value">${{printf "%.2f" .Price}}</span>
+                </div>
+            </div>
+            
+            <div class="actions">
+                <a href="/book/update?isbn={{.Isbn}}" class="btn btn-primary">Edit Book</a>
+                <a href="/books" class="btn btn-secondary">View All Books</a>
+                <button onclick="confirmDelete('{{.Isbn}}')" class="btn btn-danger">Delete Book</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function confirmDelete(isbn) {
+            if (confirm('Are you sure you want to delete this book? This action cannot be undone.')) {
+                window.location.href = '/book/delete?isbn=' + isbn;
+            }
+        }
+    </script>
+</body>
+</html>

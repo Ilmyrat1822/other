@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Library</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .header h1 {
+            color: #333;
+            font-size: 32px;
+        }
+        
+        .header-subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .add-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .book-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .book-isbn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .book-title {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .book-author {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .book-price {
+            font-size: 24px;
+            color: #667eea;
+            font-weight: 700;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #f0f0f0;
+        }
+        
+        .view-details {
+            display: inline-block;
+            margin-top: 15px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .view-details:hover {
+            color: #764ba2;
+        }
+        
+        .empty-state {
+            background: white;
+            border-radius: 10px;
+            padding: 60px 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .empty-state h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .empty-state p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+        
+        .book-count {
+            background: #f5f5f5;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div>
+                <h1>📚 Book Library</h1>
+                <p class="header-subtitle">Browse and manage your book collection</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                {{if .}}
+                <span class="book-count">{{len .}} book{{if ne (len .) 1}}s{{end}}</span>
+                {{end}}
+                <a href="/book/create" class="add-btn">+ Add New Book</a>
+            </div>
+        </div>
+        
+        {{if .}}
+        <div class="books-grid">
+            {{range .}}
+            <div class="book-card" onclick="window.location.href='/book?isbn={{.Isbn}}'">
+                <div class="book-isbn">ISBN: {{.Isbn}}</div>
+                <h2 class="book-title">{{.Title}}</h2>
+                <div class="book-author">
+                    <span>✍️</span>
+                    <span>{{.Author}}</span>
+                </div>
+                <div class="book-price">${{printf "%.2f" .Price}}</div>
+                <a href="/book?isbn={{.Isbn}}" class="view-details">View Details →</a>
+            </div>
+            {{end}}
+        </div>
+        {{else}}
+        <div class="empty-state">
+            <h2>📖 No Books Yet</h2>
+            <p>Your library is empty. Start by adding your first book!</p>
+            <a href="/book/create" class="add-btn">Add Your First Book</a>
+        </div>
+        {{end}}
+    </div>
+</body>
+</html>

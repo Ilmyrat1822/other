@@ -1,0 +1,415 @@
+{{define "index"}}
+{{template "header"}}
+   <link rel="stylesheet" href="wwwroot/css/index.css">  
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-icon">⚡</span>
+                <span class="brand-text">Portfolio</span>
+            </div>          
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Header Profile Section -->
+        <div class="header">
+            <div class="profile-section">
+                <div class="profile-img">
+                    <img src="wwwroot/assets/profile.jpg" alt="Profile" class="profile-avatar">
+                </div>
+               
+                <div class="profile-info">
+                    
+                    <h1 class="profile-name">{{or .Firstname "John Smith"}}</h1>
+                    <p class="profile-title">{{or .Lastname "Gummyyew"}}</p>
+                    <p class="profile-location">📍 Ashgabat, Turkmenistan</p>
+                    <div class="profile-badges">
+                        <span class="badge available">Available for hire</span>
+                        <span class="badge verified">Junior Developer</span>
+                    </div>
+                </div>
+            
+            </div>
+            <div class="social-section">
+                <div class="social-links">
+                    <a href="#" class="social-link github">
+                        <span class="social-icon">⚡</span>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="#" class="social-link linkedin">
+                        <span class="social-icon">💼</span>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="#" class="social-link portfolio">
+                        <span class="social-icon">🌍</span>
+                        <span>Website</span>
+                    </a>
+                    <a href="#" class="social-link resume">
+                        <span class="social-icon">📄</span>
+                        <span>Resume</span>
+                    </a>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <span>{{or .Gmail "developer@gmail.com"}}</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📱</span>
+                        <span>+993 (61) 02-51-52</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Stats Grid -->
+        <div class="stats-section">
+            <h2 class="section-header">Performance Metrics</h2>
+            <div class="stats-grid">
+                <div class="stat-card primary">
+                    <div class="stat-icon">🚀</div>
+                    <div class="stat-content">
+                        <div class="stat-number">15</div>
+                        <div class="stat-label">Projects Completed</div>
+                        <div class="stat-trend positive">WPF & Desktop Apps</div>
+                    </div>
+                </div>
+                <div class="stat-card success">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-content">
+                        <div class="stat-number">11</div>
+                        <div class="stat-label">Happy Clients</div>
+                        <div class="stat-trend neutral">4 projects pending</div>
+                    </div>
+                </div>
+                <div class="stat-card warning">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-content">
+                        <div class="stat-number">2+</div>
+                        <div class="stat-label">Years Experience</div>
+                        <div class="stat-trend neutral">WPF & C# Development</div>
+                    </div>
+                </div>
+                <div class="stat-card info">
+                    <div class="stat-icon">💻</div>
+                    <div class="stat-content">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">Technologies</div>
+                        <div class="stat-trend positive">Learning Golang</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="main-grid">
+            <!-- Enhanced Projects Section -->
+            <div class="projects-section">
+                <div class="section-header-row">
+                    <h2 class="section-header">Featured Projects</h2>
+                    <a href="/viewall" class="view-all-btn">View All →</a>
+                </div>
+                
+                <div class="project-card featured">
+                    <div class="project-header">
+                        <div class="project-meta">
+                            <span class="project-status live">Live</span>
+                            <span class="project-date">2023</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="project-link">🔗</a>
+                            <a href="#" class="project-github">⚡</a>
+                        </div>
+                    </div>
+                    <div class="project-title">"Bedew" - Turkmen National Project</div>
+                    <div class="project-desc">National-level desktop application built with WPF and C#. Features comprehensive data management with MySQL database integration for government services.</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">WPF</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">Desktop</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-meta">
+                            <span class="project-status live">Completed</span>
+                            <span class="project-date">2024</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="project-link">🔗</a>
+                            <a href="#" class="project-github">⚡</a>
+                        </div>
+                    </div>
+                    <div class="project-title">"Erdu" - Document Management System</div>
+                    <div class="project-desc">Electron-based document management system. Fixed critical frontend issues and improved user interface. Backend powered by Python Django framework.</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">WPF</span>
+                        <span class="tech-tag">Electron</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-meta">
+                            <span class="project-status development">In Progress</span>
+                            <span class="project-date">2025</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="project-github">⚡</a>
+                        </div>
+                    </div>
+                    <div class="project-title">Workplace Secret Projects</div>
+                    <div class="project-desc">Two confidential workplace-associated projects currently in development. Focusing on desktop applications and backend improvements.</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">WPF</span>
+                        <span class="tech-tag">Golang</span>
+                        <span class="tech-tag">Confidential</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Skills Section -->
+            <div class="skills-section">
+                <div class="section-header-row">
+                    <h2 class="section-header">Technical Expertise</h2>
+                    <span class="skill-summary">6 Core Technologies</span>
+                </div>
+                
+                <div class="skills-categories">
+                    <div class="skill-category">
+                        <h3 class="category-title">Desktop Development</h3>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">WPF (Windows Presentation Foundation)</span>
+                                <span class="skill-level intermediate">Junior</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">C# Programming</span>
+                                <span class="skill-level intermediate">Junior</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Windows Forms</span>
+                                <span class="skill-level intermediate">Junior</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="category-title">Web & Backend Development</h3>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Golang (Learning)</span>
+                                <span class="skill-level beginner">Beginner</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">HTML & CSS</span>
+                                <span class="skill-level beginner">Beginner</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 35%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">ASP.NET MVC</span>
+                                <span class="skill-level beginner">Beginner</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 25%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="category-title">Database Management</h3>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">MySQL</span>
+                                <span class="skill-level intermediate">Junior</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certifications">
+                    <h3 class="category-title">Education</h3>
+                    <div class="cert-item">
+                        <span class="cert-name">Oguz han Engineering and Technology University</span>
+                        <span class="cert-date">Graduate</span>
+                    </div>
+                    <div class="cert-item">
+                        <span class="cert-name">Turkmenistan University Diploma</span>
+                        <span class="cert-date">Certified</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Activity Feed -->
+        <div class="activity-section">
+            <div class="section-header-row">
+                <h2 class="section-header">Recent Activity</h2>
+                <div class="activity-filters">
+                    <button class="filter-btn active">All</button>
+                    <button class="filter-btn">Projects</button>
+                    <button class="filter-btn">Learning</button>
+                    <button class="filter-btn">Achievements</button>
+                </div>
+            </div>
+            
+            <div class="activity-timeline">
+                <div class="activity-item high-priority">
+                    <div class="activity-indicator"></div>
+                    <div class="activity-icon success">🚀</div>
+                    <div class="activity-content">
+                        <div class="activity-title">Started Learning Golang</div>
+                        <div class="activity-desc">Beginning backend development journey with Go programming language for modern web applications</div>
+                        <div class="activity-meta">
+                            <span class="activity-time">2 months ago</span>
+                            <span class="activity-category learning">Learning</span>
+                        </div>
+                    </div>
+                    <div class="activity-stats">
+                        <span class="stat-item">Backend Focus</span>
+                        <span class="stat-item">Go Language</span>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-indicator"></div>
+                    <div class="activity-icon info">💼</div>
+                    <div class="activity-content">
+                        <div class="activity-title">Fixed "Erdu" Document System</div>
+                        <div class="activity-desc">Successfully resolved frontend issues in Electron-based document management system</div>
+                        <div class="activity-meta">
+                            <span class="activity-time">2024</span>
+                            <span class="activity-category project">Project</span>
+                        </div>
+                    </div>
+                    <div class="activity-rating">
+                        ⭐⭐⭐⭐⭐ Client Satisfied
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-indicator"></div>
+                    <div class="activity-icon primary">🎯</div>
+                    <div class="activity-content">
+                        <div class="activity-title">Completed "Bedew" National Project</div>
+                        <div class="activity-desc">Delivered major Turkmen national desktop application with MySQL integration</div>
+                        <div class="activity-meta">
+                            <span class="activity-time">2023</span>
+                            <span class="activity-category achievement">Achievement</span>
+                        </div>
+                    </div>
+                    <div class="activity-badge">
+                        <span class="badge-cert">National Project</span>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-indicator"></div>
+                    <div class="activity-icon warning">📚</div>
+                    <div class="activity-content">
+                        <div class="activity-title">Graduated from University</div>
+                        <div class="activity-desc">Completed degree at Oguz han Engineering and Technology University of Turkmenistan</div>
+                        <div class="activity-meta">
+                            <span class="activity-time">Graduate</span>
+                            <span class="activity-category achievement">Education</span>
+                        </div>
+                    </div>
+                    <div class="activity-engagement">
+                        <span class="engagement-item">🎓 Diploma</span>
+                        <span class="engagement-item">🏛️ University</span>
+                        <span class="engagement-item">🇹🇲 Turkmenistan</span>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-indicator"></div>
+                    <div class="activity-icon success">⭐</div>
+                    <div class="activity-content">
+                        <div class="activity-title">15 Projects Completed</div>
+                        <div class="activity-desc">Successfully delivered 15 desktop applications serving 11 happy clients over 2+ years</div>
+                        <div class="activity-meta">
+                            <span class="activity-time">2+ years</span>
+                            <span class="activity-category achievement">Milestone</span>
+                        </div>
+                    </div>
+                    <div class="client-info">
+                        <span class="client-name">WPF & C# Expertise</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Professional Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#" class="footer-link">About</a>
+                <a href="#" class="footer-link">Services</a>
+                <a href="#" class="footer-link">Portfolio</a>
+                <a href="#" class="footer-link">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <a href="#" class="footer-link">Desktop Development</a>
+                <a href="#" class="footer-link">WPF Applications</a>
+                <a href="#" class="footer-link">Database Design</a>
+                <a href="#" class="footer-link">System Integration</a>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="footer-social">
+                    <a href="#" class="footer-social-link">GitHub</a>
+                    <a href="#" class="footer-social-link">LinkedIn</a>
+                    <a href="#" class="footer-social-link">Portfolio</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 {{or .Firstname "Developer"}} {{or .Lastname ""}}. All rights reserved.</p>
+            <p>Available for desktop development projects and Golang learning opportunities.</p>
+        </div>
+    </footer>
+</body>
+
+{{template "footer"}}
+{{end}}
